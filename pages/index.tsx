@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import CleverTap from 'clevertap-web-sdk/clevertap'
 
-const profileApiUrl = '/profile';
 export default function Home() {
   const [clevertapModule, setClevertapModule] = useState<CleverTap | null>(null)
 
@@ -16,49 +15,11 @@ export default function Home() {
     }
 
     if (clevertap) {
-      clevertap.event.push('Amee')            // Popup Campaign
+      clevertap.event.push('React Web Test')            // Popup Campaign
       clevertap.event.push('webpopup test')   // Banner Campaign
       clevertap.event.push('InternalTest2')   // Inbox Campaign
     }
   }
-
-  const profileData = {
-    "d": [
-      {
-        "identity": "345543",
-        "type": "profile",
-        "profileData": {
-            "Name": "John Doe",
-            "Email": "john03aug@abc.com"
-        }
-      }
-    ]
-  }
-
-  fetch('/clevertap/upload', {
-    method: 'POST',
-    headers: {
-      'X-CleverTap-Account-Id': 'W9R-486-4W5Z',
-      'X-CleverTap-Passcode': '96921fadbf3445a7b416039d0e9d046d',
-      'Content-Type': 'application/json',
-      // Add any other required headers here
-    },
-    body: JSON.stringify(profileData),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Handle the API response data here
-      console.log(data);
-    })
-    .catch((error) => {
-      // Handle any errors that occurred during the API call
-      console.error('Error:', error);
-    });
 
   return (
     <div>
@@ -101,7 +62,7 @@ export default function Home() {
 async function initializeClevertap(): Promise<CleverTap> {
   const clevertapModule = await import('clevertap-web-sdk')
 
-  clevertapModule.default.init("ZWW-WWW-WWRZ")
+  clevertapModule.default.init("W9R-486-4W5Z")
   clevertapModule.default.privacy.push({ optOut: false })
   clevertapModule.default.privacy.push({ useIP: false })
   clevertapModule.default.setLogLevel(3)
