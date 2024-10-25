@@ -65,7 +65,7 @@ export default function Home() {
 async function initializeClevertap(): Promise<CleverTap> {
   const clevertapModule = await import('clevertap-web-sdk')
 
-  clevertapModule.default.init("W9R-486-4W5Z")
+  clevertapModule.default.init('ZWW-WWW-WW4Z', 'in1')
   clevertapModule.default.setLogLevel(3)
 
   return clevertapModule.default
